@@ -15,7 +15,7 @@
     "@ai-sdk/anthropic": "^2.0.23",
     "@ai-sdk/openai": "^2.0.42",
     "@ichibot/shared": "workspace:*",
-    "ai": "^5.0.60",
+    "ai": "^7.0.127",
     "zod": "^4.1.11"
   },
   "devDependencies": {
