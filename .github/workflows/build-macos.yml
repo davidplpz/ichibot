@@ -47,7 +47,7 @@ jobs:
         run: pnpm bundle:mac
 
       - name: Upload DMG
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ichibot-macos-${{ matrix.arch }}
           path: apps/tauri/src-tauri/target/release/bundle/dmg/*.dmg
