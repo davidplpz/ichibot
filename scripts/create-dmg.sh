@@ -5,7 +5,8 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_PATH="$ROOT_DIR/apps/tauri/src-tauri/target/release/bundle/macos/Ichibot.app"
 OUTPUT_DIR="$ROOT_DIR/apps/tauri/src-tauri/target/release/bundle/dmg"
-OUTPUT_PATH="$OUTPUT_DIR/Ichibot_0.0.1_$(uname -m).dmg"
+VERSION="$(node -p "JSON.parse(require('fs').readFileSync('$ROOT_DIR/package.json', 'utf8')).version")"
+OUTPUT_PATH="$OUTPUT_DIR/Ichibot_${VERSION}_$(uname -m).dmg"
 STAGING_DIR="$(mktemp -d "${TMPDIR:-/tmp}/ichibot-dmg.XXXXXX")"
 
 cleanup() {
