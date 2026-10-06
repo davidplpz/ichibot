@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  # pnpm workspaces are handled by Dependabot through the npm ecosystem.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    versioning-strategy: increase
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: cargo
+    directory: /apps/tauri/src-tauri
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
