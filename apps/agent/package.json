@@ -12,7 +12,7 @@
     "test": "tsc -p tsconfig.test.json && node --test .test-dist/test/*.test.js"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^2.0.23",
+    "@ai-sdk/anthropic": "^4.0.71",
     "@ai-sdk/openai": "^2.0.42",
     "@ichibot/shared": "workspace:*",
     "ai": "^5.0.60",
