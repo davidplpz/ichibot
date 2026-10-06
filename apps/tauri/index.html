@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ichibot - Chat</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body class="chat-body">
+    <div id="app">
+      <aside id="sidebar">
+        <div class="sidebar-head">
+          <span class="sidebar-brand">Ichibot</span>
+          <button type="button" id="new-session">Nueva conversación</button>
+        </div>
+        <div id="sidebar-list" class="sidebar-list"></div>
+      </aside>
+      <div class="chat-col">
+        <header class="chat-header">
+          <div class="title">
+            <span class="chat-avatar" aria-hidden="true">I</span>
+            <span class="title-copy"><strong>Ichibot</strong><small id="companion-status">Mascota conectada</small></span>
+          </div>
+          <label class="model-picker">
+            <span>Proveedor</span>
+            <select id="provider-select" aria-label="Seleccionar proveedor">
+              <option value="claude">Claude</option>
+              <option value="openai">OpenAI</option>
+            </select>
+          </label>
+          <label class="model-picker">
+            <span>Modelo</span>
+            <select id="model-select" aria-label="Seleccionar modelo">
+              <option value="claude-sonnet-4-5-20250929">Sonnet 4.5</option>
+              <option value="claude-opus-4-1-20250805">Opus 4.1</option>
+              <option value="claude-3-5-haiku-20241022">Haiku 3.5</option>
+            </select>
+          </label>
+          <button type="button" id="appearance-settings" class="settings-button">Caras</button>
+          <button type="button" id="api-key-settings" class="settings-button">Claves</button>
+          <div class="provider" id="provider">Claude • listo</div>
+        </header>
+        <main id="messages" class="messages"></main>
+        <form id="input-form" class="input-form">
+          <textarea id="input" rows="1" placeholder="Decile algo a Ichibot..." spellcheck="false"></textarea>
+          <button type="submit" id="send">Enviar</button>
+          <button type="button" id="cancel" class="cancel-button hidden">Parar</button>
+        </form>
+        <footer class="hint">MVP 1–4 • API Key por ahora</footer>
+      </div>
+    </div>
+    <div id="approval-modal" class="approval-modal hidden" aria-hidden="true">
+      <div class="approval-card" role="dialog" aria-modal="true" aria-labelledby="approval-title">
+        <div class="approval-kicker">Autorización necesaria</div>
+        <h2 id="approval-title"></h2>
+        <p id="approval-description"></p>
+        <div class="approval-modal-actions">
+          <button type="button" id="approval-deny" class="approval-modal-btn danger">Denegar</button>
+          <button type="button" id="approval-always" class="approval-modal-btn">Permitir siempre</button>
+          <button type="button" id="approval-allow" class="approval-modal-btn primary">Permitir</button>
+        </div>
+      </div>
+    </div>
+    <div id="api-key-modal" class="approval-modal hidden" aria-hidden="true">
+      <div class="approval-card api-key-card" role="dialog" aria-modal="true" aria-labelledby="api-key-title">
+        <div class="approval-kicker">Configuración</div>
+        <h2 id="api-key-title">Claves de proveedor</h2>
+        <p>Las claves se guardan en el Llavero de macOS y no se muestran después de guardarlas.</p>
+        <label class="key-field">
+          <span>Anthropic / Claude</span>
+          <input id="claude-api-key" type="password" autocomplete="off" placeholder="sk-ant-…" />
+        </label>
+        <label class="key-field">
+          <span>OpenAI</span>
+          <input id="openai-api-key" type="password" autocomplete="off" placeholder="sk-…" />
+        </label>
+        <div class="api-key-actions">
+          <button type="button" id="api-key-cancel" class="approval-modal-btn">Cancelar</button>
+          <button type="button" id="api-key-delete" class="approval-modal-btn danger">Borrar claves</button>
+          <button type="button" id="api-key-save" class="approval-modal-btn primary">Guardar claves</button>
+        </div>
+      </div>
+    </div>
+    <div id="appearance-modal" class="approval-modal hidden" aria-hidden="true">
+      <div class="approval-card appearance-card" role="dialog" aria-modal="true" aria-labelledby="appearance-title">
+        <div class="approval-kicker">Personalización</div>
+        <h2 id="appearance-title">Elige la cara de Ichibot</h2>
+        <div id="appearance-grid" class="appearance-grid"></div>
+        <div class="api-key-actions">
+          <button type="button" id="appearance-cancel" class="approval-modal-btn">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "ichibot",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm build:agent && pnpm sidecar && pnpm --filter @ichibot/tauri dev",
+    "dev:agent": "pnpm --filter @ichibot/agent dev",
+    "dev:tauri": "pnpm --filter @ichibot/tauri dev",
+    "build": "pnpm build:agent && pnpm sidecar && pnpm --filter @ichibot/tauri build",
+    "test": "pnpm --filter @ichibot/agent test",
+    "bundle:mac": "pnpm build:agent && pnpm sidecar && pnpm --filter @ichibot/tauri exec tauri build --bundles app && bash scripts/create-dmg.sh",
+    "build:agent": "pnpm --filter @ichibot/agent build",
+    "sidecar": "node -e \"const fs=require('fs');const os=require('os');const t=os.arch()==='arm64'?'aarch64-apple-darwin':'x86_64-apple-darwin';const d='apps/tauri/src-tauri/binaries/agent-'+t;fs.copyFileSync('apps/agent/dist/index.js',d);fs.chmodSync(d,0o755);console.log('sidecar ->',d)\""
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Ichibot",
+  "version": "0.0.1",
+  "identifier": "com.ichibot.desktop",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "pnpm dev:vite",
+    "beforeBuildCommand": "pnpm build"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "label": "mochi-overlay",
+        "title": "Ichibot Mochi",
+        "url": "/overlay.html",
+        "width": 180,
+        "height": 180,
+        "x": 0,
+        "y": 0,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "skipTaskbar": true,
+        "visible": true,
+        "focus": false
+      },
+      {
+        "label": "chat",
+        "title": "Ichibot Chat",
+        "url": "/index.html",
+        "width": 560,
+        "height": 600,
+        "decorations": true,
+        "transparent": false,
+        "resizable": true,
+        "skipTaskbar": false,
+        "visible": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png"
+    ],
+    "externalBin": [
+      "binaries/agent"
+    ],
+    "resources": []
+  }
+}

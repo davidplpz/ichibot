@@ -1,0 +1,26 @@
+{
+  "name": "@ichibot/agent",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "agent": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test .test-dist/test/*.test.js"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^2.0.23",
+    "@ai-sdk/openai": "^2.0.42",
+    "@ichibot/shared": "workspace:*",
+    "ai": "^5.0.60",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
